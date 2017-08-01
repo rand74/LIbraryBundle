@@ -6,10 +6,10 @@
  * Time: 10:29
  */
 
-namespace BooksBundle\Model;
+namespace BooksBundle\Enum;
 
 
-abstract class SupportTypeEnum
+class SupportTypeEnum extends Enum implements AvailableType
 {
     const TYPE_BOOK = "book";
     const TYPE_EBOOK = "ebook";
@@ -23,19 +23,6 @@ abstract class SupportTypeEnum
         self::TYPE_EBOOK => "Ebook",
         self::TYPE_COMIC_STRIP => "Bande dessinée"
     ];
-
-    /**
-     * @param string $typeShortName
-     * @return string
-     */
-    public static function getTypeName($typeShortName)
-    {
-        if (!isset(static::$typeName[$typeShortName]))
-        {
-            return "Unknown type ($typeShortName)";
-        }
-        return static::$typeName[$typeShortName];
-    }
 
     /**
      * @return array
