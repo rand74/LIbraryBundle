@@ -19,6 +19,11 @@ abstract class Library
     protected $id;
 
     /**
+     * @var
+     */
+    protected $type;
+
+    /**
      * @var string
      */
     protected $title;
