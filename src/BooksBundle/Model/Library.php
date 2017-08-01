@@ -19,7 +19,7 @@ abstract class Library
     protected $id;
 
     /**
-     * @var
+     * @var string
      */
     protected $type;
 
@@ -86,6 +86,21 @@ abstract class Library
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $type
+     * @return Library
+     */
+    public function setType($type)
+    {
+        if (!in_array($type, SupportTypeEnum::getAvailableTypes())) {
+            throw new \InvalidArgumentException("Invalid type");
+        }
+
+        $this->type = $type;
+
+        return $this;
     }
 
     /**

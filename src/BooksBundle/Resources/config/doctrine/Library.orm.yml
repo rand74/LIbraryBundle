@@ -1,0 +1,33 @@
+BooksBundle\Model\Library:
+    type: entity
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: typeSupport
+        type: integer
+    discriminatorMap:
+        1: Book
+        2: ComicStrip
+        3: Ebook
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        type:
+            type:
+        title:
+        author:
+        cycle:
+        resume:
+        detention:
+        isbn_10:
+        isbn_13:
+        publishedDate:
+        pageCount:
+        language:
+        editor:
+
