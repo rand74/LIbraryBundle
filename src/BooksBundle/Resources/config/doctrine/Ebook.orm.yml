@@ -1,0 +1,15 @@
+BooksBundle\Entity\Ebook:
+    type: entity
+
+    fields:
+        size:
+            type: integer
+            nullable: true
+        unitySize:
+            type: string
+            length: 10
+            nullable: true
+        file:
+            type: string
+            length: 255
+            nullable: true

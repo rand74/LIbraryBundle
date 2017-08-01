@@ -1,0 +1,8 @@
+BooksBundle\Entity\ComicStrip:
+    type: entity
+
+    fields:
+        designer:
+            type: string
+            length: 200
+            nullable: true

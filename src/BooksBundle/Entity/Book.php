@@ -9,5 +9,5 @@ use BooksBundle\Model\Library;
  */
 class Book extends Library
 {
-
+    protected $formatBook;
 }

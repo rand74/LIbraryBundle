@@ -64,6 +64,11 @@ abstract class Library
     protected $publishedDate;
 
     /**
+     * @var \DateTime
+     */
+    protected $registrationDate;
+
+    /**
      * @var integer
      */
     protected $pageCount;
@@ -77,6 +82,12 @@ abstract class Library
      * @var string
      */
     protected $editor;
+
+
+    public function __construct()
+    {
+        $this->registrationDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -293,6 +304,30 @@ abstract class Library
     public function getPublishedDate()
     {
         return $this->publishedDate;
+    }
+
+    /**
+     * Set registrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return Library
+     */
+    public function setRegistration($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
     }
 
     /**

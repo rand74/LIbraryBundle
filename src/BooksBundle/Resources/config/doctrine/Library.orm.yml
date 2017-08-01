@@ -1,5 +1,6 @@
 BooksBundle\Model\Library:
     type: entity
+    repositoryClass: BooksBundle\Repository\LibraryRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
         name: typeSupport
@@ -18,16 +19,39 @@ BooksBundle\Model\Library:
 
     fields:
         type:
-            type:
+            type: string
         title:
+            type: string
+            length: 200
         author:
+            type: string
+            length: 100
         cycle:
+            type: string
+            length: 200
+            nullable: true
         resume:
+            type: text
         detention:
+            type: boolean
         isbn_10:
+            type: integer
+            nullable: true
         isbn_13:
+            type: integer
+            nullable: true
         publishedDate:
+            type: datetime
+            nullable: true
         pageCount:
+            type: integer
+            nullable: true
         language:
+            type: string
+            length: 50
+            nullable: true
         editor:
+            type: string
+            length: 100
+            nullable: true
 

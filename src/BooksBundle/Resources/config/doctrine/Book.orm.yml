@@ -1,0 +1,4 @@
+BooksBundle\Entity\Book:
+    type: entity
+
+    fields:
