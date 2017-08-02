@@ -18,7 +18,7 @@ class SupportTypeEnum extends Enum implements AvailableType
     /**
      * @var array type support name
      */
-    protected static $typeName = [
+    public static $typeName = [
         self::TYPE_BOOK => "Livre",
         self::TYPE_EBOOK => "Ebook",
         self::TYPE_COMIC_STRIP => "Bande dessinée"
@@ -31,7 +31,7 @@ class SupportTypeEnum extends Enum implements AvailableType
     {
         return [
             self::TYPE_BOOK,
-            self::TYPE_BOOK,
+            self::TYPE_EBOOK,
             self::TYPE_COMIC_STRIP
         ];
     }

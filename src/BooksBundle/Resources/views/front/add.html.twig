@@ -1,0 +1,23 @@
+{% extends '@Books/layout.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    <select id="types">
+        {% for type in types|keys %}
+            <option value="support_type_{{ loop.index }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+    {% for form in forms %}
+        <div class="form hidden" id="support_type_{{ loop.index }}">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    <!-- JS -->
+    <script src="{{ asset('js/supportType.js') }}"></script>
+{% endblock %}

@@ -16,6 +16,10 @@ class Book extends Library
      */
     protected $formatBook;
 
+    /**
+     * @param $formatBook
+     * @return Book
+     */
     public function setFormatBook($formatBook)
     {
         if (!in_array($formatBook, FormatBookEnum::getAvailableTypes())) {
