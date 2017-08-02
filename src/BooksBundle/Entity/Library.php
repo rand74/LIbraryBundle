@@ -1,12 +1,8 @@
 <?php
 
-namespace BooksBundle\Model;
-/**
- * Created by PhpStorm.
- * User: david
- * Date: 01/08/17
- * Time: 09:49
- */
+namespace BooksBundle\Entity;
+
+use BooksBundle\Enum\SupportTypeEnum;
 
 /**
  * Class Library

@@ -1,14 +1,15 @@
-BooksBundle\Model\Library:
+BooksBundle\Entity\Library:
     type: entity
+    table: library
     repositoryClass: BooksBundle\Repository\LibraryRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
         name: typeSupport
-        type: integer
+        type: string
     discriminatorMap:
-        1: Book
-        2: ComicStrip
-        3: Ebook
+        book: BooksBundle\Entity\Book
+        comic_strip: BooksBundle\Entity\ComicStrip
+        ebook: BooksBundle\Entity\Ebook
 
     id:
         id:
@@ -54,4 +55,15 @@ BooksBundle\Model\Library:
             type: string
             length: 100
             nullable: true
+
+BooksBundle\Entity\Book:
+    type: entity
+
+BooksBundle\Entity\ComicStrip:
+    type: entity
+
+BooksBundle\Entity\Ebook:
+    type: entity
+
+
 

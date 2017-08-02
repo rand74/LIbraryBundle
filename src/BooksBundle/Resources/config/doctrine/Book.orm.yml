@@ -1,4 +1,9 @@
 BooksBundle\Entity\Book:
     type: entity
+    table: library
 
     fields:
+        formatBook:
+            type: string
+            length: 100
+            nullable: true

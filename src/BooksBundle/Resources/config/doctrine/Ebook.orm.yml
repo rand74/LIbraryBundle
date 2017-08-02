@@ -1,5 +1,6 @@
 BooksBundle\Entity\Ebook:
     type: entity
+    table: library
 
     fields:
         size:

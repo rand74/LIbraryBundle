@@ -2,12 +2,28 @@
 
 namespace BooksBundle\Entity;
 
-use BooksBundle\Model\Library;
+use BooksBundle\Enum\FormatBookEnum;
+
+
 
 /**
  * Class Book
  */
 class Book extends Library
 {
+    /**
+     * @var string
+     */
     protected $formatBook;
+
+    public function setFormatBook($formatBook)
+    {
+        if (!in_array($formatBook, FormatBookEnum::getAvailableTypes())) {
+            throw new \InvalidArgumentException("Invalid type");
+        }
+
+        $this->formatBook = $formatBook;
+
+        return $this;
+    }
 }

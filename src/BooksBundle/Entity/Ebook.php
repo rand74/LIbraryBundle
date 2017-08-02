@@ -2,7 +2,7 @@
 
 namespace BooksBundle\Entity;
 
-use BooksBundle\Model\Library;
+
 
 /**
  * Class Ebook
