@@ -1,0 +1,29 @@
+{% extends '@Books/layout.html.twig' %}
+
+{% block title %}Bibliothèque - Ducruet David{% endblock %}
+
+{% block body %}
+    <section class="container-fluid">
+        <div class="col-xs-12">
+            <h2 id="book-title">Bibliothèque</h2>
+        </div>
+        <div class="container">
+            <div class="col-xs-12">
+                <a href="">Enregistrement d'un livre à l'aide du code barre</a>
+            </div>
+            <div class="col-xs-12">
+                <a href="{{ path('books_add') }}">Enregistrement manuel d'un livre</a>
+            </div>
+            <div class="col-xs-12">
+                <a href="">Rechercher un auteur</a>
+            </div>
+            <div class="col-xs-12">
+                <a href="">Liste des livres</a>
+            </div>
+            <div class="col-xs-12">
+                <p>Recherche rapide</p>
+                <input type="text"/>
+            </div>
+        </div>
+    </section>
+{% endblock %}

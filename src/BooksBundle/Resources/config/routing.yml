@@ -1,3 +1,7 @@
 books_homepage:
     path:     /
-    defaults: { _controller: BooksBundle:Default:index }
+    defaults: { _controller: BooksBundle:Library:index }
+
+books_add:
+    path:   /add
+    defaults: { _controller: BooksBundle:Library:add }
