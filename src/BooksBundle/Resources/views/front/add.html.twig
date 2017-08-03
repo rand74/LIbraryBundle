@@ -9,13 +9,17 @@
         {% endfor %}
     </select>
     {% for form in forms %}
-        <div class="form hidden" id="support_type_{{ loop.index }}">
-            {{ form_start(form) }}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(form) }}
+        <div class="form hidden col-xs-offset-2 col-xs-6" id="support_type_{{ loop.index }}">
+            {{ form_label(form) }}
             {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {{ form_rest(form) }}
         </div>
+        {{ form_end(form) }}
     {% endfor %}
 {% endblock %}
+
 
 {% block javascripts %}
     <!-- JS -->

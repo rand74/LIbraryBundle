@@ -52,7 +52,7 @@ class LibraryController extends Controller
 
         $views = [];
         foreach ($forms as $form) {
-            $views = $form->createView();
+            $views[] = $form->createView();
         }
         return $this->render('@Books/front/add.html.twig', array(
             'forms' => $views,
