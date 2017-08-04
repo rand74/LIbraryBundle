@@ -5,3 +5,11 @@ books_homepage:
 books_add:
     path:   /add
     defaults: { _controller: BooksBundle:Library:add }
+
+books_saving:
+    path:   /saving
+    defaults: { _controller: BooksBundle:Library:addSupportForEan }
+
+books_results_saving:
+    path:   /results-saving
+    defaults: { _controller: BooksBundle:Library:resultsSaving }
