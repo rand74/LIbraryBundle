@@ -3,6 +3,37 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block body %}
+    <section class="col-xs-6">
+        <div class="col-xs-12">
+            {{ volumeInfo['title'] }}
+        </div>
+        <div class="col-xs-12">
+            {% for author in volumeInfo['authors'] %}
+                {{ author }}
+            {% endfor %}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['publishedDate'] }}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['description'] }}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['industryIdentifiers'][0]['identifier'] }}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['industryIdentifiers'][1]['identifier'] }}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['pageCount'] }}
+        </div>
+        <div class="col-xs-12">
+            {{ volumeInfo['language'] }}
+        </div>
+        <div class="col-xs-12"></div>
+    </section>
 
-    {{ volumeInfo['title'] }}
+    <section class="col-xs-6">
+
+    </section>
 {% endblock %}
