@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }}{% endblock %}
 
-{% block body %}{{ dump(volumeInfo) }}
+{% block body %}{#{ dump(volumeInfo) }#}
     <section class="col-xs-6">
         <div class="col-xs-12">
             <img src="{{ volumeInfo['imageLinks']['smallThumbnail'] }}">
