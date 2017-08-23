@@ -47,8 +47,7 @@ class LibraryType extends AbstractType
                 'choices' => array(
                     'Oui' => '1',
                     'Non' => '0'
-                ),
-                'choices_as_values' => true
+                )
             ))
             ->add('isbn10', IntegerType::class, array(
                 'label' => 'Isbn 10'

@@ -22,7 +22,6 @@ class BookType extends LibraryType
         $builder
             ->add('formatBook', ChoiceType::class, array(
                 'choices' => FormatBookEnum::getAvailableTypes(),
-                'choices_as_values' => true,
                 'choice_label' => function($choice) {
                     return FormatBookEnum::getTypeName($choice);
                 }

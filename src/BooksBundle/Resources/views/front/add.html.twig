@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block body %}
+    <h2>Formulaire d'enregistrement d'un support</h2>
     <select id="types">
         {% for type in types|keys %}
             <option value="support_type_{{ loop.index }}">{{ type }}</option>
@@ -18,7 +19,7 @@
         </div>
         {{ form_end(form) }}
     {% endfor %}
-
+    <button type="submit" value="submit"></button>
     <div class="col-xs-12">
         <a href="{{ path('books_homepage') }}">Retour à l'acceuil</a>
     </div>

@@ -10,6 +10,7 @@ namespace BooksBundle\Controller;
 
 
 use BooksBundle\Enum\SupportTypeEnum;
+use BooksBundle\Exception\InvalidEanException;
 use BooksBundle\Form\Type\BookType;
 use BooksBundle\Form\Type\ComicStripType;
 use BooksBundle\Form\Type\EbookType;
@@ -69,12 +70,19 @@ class LibraryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid() && $form->isSubmitted()) {
-
             $ean = $form->getData()['ean'];
             $requestBook = 'https://www.googleapis.com/books/v1/volumes?q=' . $ean;
             $responseBook = file_get_contents($requestBook);
-            $results = json_decode($responseBook, true);
-            $this->get('session')->set('results', $results);
+            $resultsResponseBook = json_decode($responseBook, true);
+            if ($resultsResponseBook['totalItems'] == 0) {
+                throw new InvalidEanException('The ean: '.$ean.' doesn\'t exist!');
+            } else {
+                $selfLink = $resultsResponseBook['items'][0]['selfLink'];
+                $selfLinkContent = file_get_contents($selfLink);
+                $results = json_decode($selfLinkContent, true);
+                $this->get('session')->set('results', $results);
+            }
+
             return $this->redirectToRoute('books_results_saving');
 
         }
@@ -90,18 +98,14 @@ class LibraryController extends Controller
 
         } else {
             $results = $session->get('results');
-            if ($results['totalItems'] = 0) {
-
-            } else {
-                $volumeInfo = $results['items'][0]['volumeInfo'];
-                $saleInfo = $results['items'][0]['saleInfo'];
-                $accessInfo = $results['items'][0]['accessInfo'];
-                return $this->render('@Books/front/resultSaving.html.twig', array(
-                    'volumeInfo' => $volumeInfo,
-                    'saleInfo' => $saleInfo,
-                    'accessInfo' => $accessInfo
-                    ));
-            }
+            $volumeInfo = $results['volumeInfo'];
+            $saleInfo = $results['saleInfo'];
+            $accessInfo = $results['accessInfo'];
+            return $this->render('@Books/front/resultSaving.html.twig', array(
+                'volumeInfo' => $volumeInfo,
+                'saleInfo' => $saleInfo,
+                'accessInfo' => $accessInfo
+                ));
         }
         return $this->render('@Books/front/resultSaving.html.twig');
     }

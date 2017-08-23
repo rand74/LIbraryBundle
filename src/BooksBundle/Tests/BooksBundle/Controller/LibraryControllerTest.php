@@ -23,5 +23,14 @@ class LibraryControllerTest extends WebTestCase
         $this->assertTrue($crawler->filter('h2:contains("Bibliothèque")')->count() == 1);
     }
 
+    public function testAddAction()
+    {
+        $client = static::createClient();
 
+        $crawler = $client->request('GET', '/add');
+        $this->assertEquals('BooksBundle\Controller\LibraryController::addAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertTrue(200 == $client->getResponse()->getStatusCode());
+        $this->assertTrue($crawler->filter('h2:contains("Formulaire d\'enregistrement d\'un support")')->count() == 1);
+
+    }
 }
