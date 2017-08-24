@@ -14,8 +14,8 @@ use BooksBundle\Form\Type\BookType;
 use BooksBundle\Form\Type\ComicStripType;
 use BooksBundle\Form\Type\EbookType;
 use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
-use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 class SupportFormBuilder
@@ -24,15 +24,15 @@ class SupportFormBuilder
     protected $twig;
     protected $form;
     protected $request;
-    protected $formFactory;
+    protected $controller;
 
-    public function __construct(EntityManager $em, \Twig_Environment $twig, Form $form, Request $request, FormFactory $formFactory)
+    public function __construct(EntityManager $em, \Twig_Environment $twig, Form $form, Request $request, Controller $controller)
     {
         $this->em           = $em;
         $this->twig         = $twig;
         $this->form         = $form;
         $this->request      = $request;
-        $this->formFactory  = $formFactory;
+        $this->controller   = $controller;
     }
 
     public function addFormSupport($page)
@@ -46,7 +46,7 @@ class SupportFormBuilder
 
         $forms =[];
         foreach ($types as $type) {
-            $forms[] = $this->formFactory->createForm($type);
+            $forms[] = $this->controller->createForm($type);
         }
 
         if ($this->request->isMethod('POST')) {

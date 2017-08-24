@@ -101,10 +101,45 @@ class LibraryController extends Controller
             $volumeInfo = $results['volumeInfo'];
             $saleInfo = $results['saleInfo'];
             $accessInfo = $results['accessInfo'];
+
+            $typeName = SupportTypeEnum::$typeName;
+            $types = [
+                $typeName[SupportTypeEnum::TYPE_BOOK] => BookType::class,
+                $typeName[SupportTypeEnum::TYPE_EBOOK] => EbookType::class,
+                $typeName[SupportTypeEnum::TYPE_COMIC_STRIP] => ComicStripType::class
+            ];
+
+            $forms =[];
+            foreach ($types as $type) {
+                $forms[] = $this->createForm($type);
+            }
+
+            if ($request->isMethod('POST')) {
+                foreach ($forms as $form) {
+                    $form->handleRequest($request);
+
+                    if (!$form->isSubmitted()) continue;
+
+                    if ($form->isValid()) {
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($form);
+                        $em->flush();
+                        break;
+                    }
+                }
+            }
+
+            $views = [];
+            foreach ($forms as $form) {
+                $views[] = $form->createView();
+            }
+
             return $this->render('@Books/front/resultSaving.html.twig', array(
                 'volumeInfo' => $volumeInfo,
                 'saleInfo' => $saleInfo,
-                'accessInfo' => $accessInfo
+                'accessInfo' => $accessInfo,
+                'forms' => $views,
+                'types' => $types
                 ));
         }
         return $this->render('@Books/front/resultSaving.html.twig');
