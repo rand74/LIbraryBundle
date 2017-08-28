@@ -8,10 +8,10 @@
             <img src="{{ volumeInfo['imageLinks']['smallThumbnail'] }}">
             <img class="hidden" src="{{ volumeInfo['imageLinks']['small'] }}">
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoTittle">
             {{ volumeInfo['title'] }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoAuthor">
             {% for author in volumeInfo['authors'] %}
                 {{ author }}
             {% endfor %}
@@ -19,19 +19,19 @@
         <div class="col-xs-12">
             {{ volumeInfo['publishedDate'] }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoDescription">
             {{ volumeInfo['description']|raw }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoIsbn10">
             {{ volumeInfo['industryIdentifiers'][0]['identifier'] }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoIsbn13">
             {{ volumeInfo['industryIdentifiers'][1]['identifier'] }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoPageCount">
             {{ volumeInfo['pageCount'] }}
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="volumeInfoLanguage">
             {{ volumeInfo['language'] }}
         </div>
         <div class="col-xs-12"></div>
@@ -65,4 +65,5 @@
 {% block javascripts %}
     <!-- JS -->
     <script src="{{ asset('js/supportType.js') }}"></script>
+    <script src="{{ asset('js/imputPreFill.js') }}"></script>
 {% endblock %}
