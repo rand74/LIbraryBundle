@@ -8,6 +8,12 @@ $(document).ready(function() {
             var author = $('#volumeInfoAuthor').text().trim();
             $('#add_library_author').val(author);
         }
+        if ($('#volumeInfoPublishedDate').length != 0) {
+            var arrayPublishedDate = $('#volumeInfoPublishedDate').text().trim().split("-");
+            $('#add_library_publishedDate_year').val(arrayPublishedDate[0]);
+            $('#add_library_publishedDate_month').val(arrayPublishedDate[1]);
+            $('#add_library_publishedDate_day').val(arrayPublishedDate[2]);
+        }
         if ($('#volumeInfoDescription').length != 0) {
             var description = $('#volumeInfoDescription').text().trim();
             $('#add_library_resume').val(description);
